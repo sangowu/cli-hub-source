@@ -1,0 +1,7 @@
+{
+  "identifier": "com.clihub.host-test",
+  "productName": "CLI Hub Host Test",
+  "mainBinaryName": "cli-hub-host-test-interface",
+  "app": { "windows": [{ "title": "CLI Hub Host Test", "width": 1100, "height": 760, "minWidth": 720, "minHeight": 600 }] },
+  "bundle": { "createUpdaterArtifacts": false }
+}

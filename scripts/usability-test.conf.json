@@ -1,0 +1,5 @@
+{
+  "identifier": "com.clihub.usability-test",
+  "productName": "CLI Hub Usability Test",
+  "build": { "beforeDevCommand": "" }
+}

@@ -1,0 +1,5 @@
+{
+  "identifier": "com.clihub.newline-test",
+  "productName": "CLI Hub Newline Test",
+  "build": { "beforeDevCommand": "" }
+}

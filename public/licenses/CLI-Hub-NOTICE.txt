@@ -1,0 +1,16 @@
+CLI Hub
+Copyright (C) 2026 CLI Hub contributors.
+
+Original CLI Hub code is licensed under GNU GPL v3.0 only (GPL-3.0-only).
+This program is distributed without warranty. See CLI-Hub-GPL-3.0.txt
+for the complete license terms.
+
+Source repository: https://github.com/sangowu/cli-hub-source
+Official installers and updates: https://github.com/sangowu/cli-hub-releases
+Versioned releases should link to their corresponding source revision.
+
+Third-party content retains its own licenses. See:
+- dependency-notices.txt (locked code dependency license/notice texts)
+- JetBrainsMono-OFL.txt (JetBrains Mono 2.304)
+- NerdFonts-LICENSE.txt (Nerd Fonts 3.3.0 patching notices)
+- SarasaGothic-LICENSE.txt (Sarasa Mono SC 1.0.42)

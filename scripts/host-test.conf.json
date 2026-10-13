@@ -1,0 +1,5 @@
+{
+  "identifier": "com.clihub.host-test",
+  "productName": "CLI Hub Host Test",
+  "build": { "beforeDevCommand": "" }
+}
