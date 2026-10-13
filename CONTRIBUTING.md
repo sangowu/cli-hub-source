@@ -29,7 +29,7 @@ node scripts/verify_terminal_shortcuts.mjs
 ## 提交修改 / Submitting changes
 
 - PR 说明问题、最终行为、验证结果和已知限制。/ Explain the problem, resulting behavior, validation and known limitations.
-- 行为变化同步更新文档；修复缺陷时更新 `docs/FIX_LOG.md`。/ Update documentation for behavior changes and `docs/FIX_LOG.md` for bug fixes.
+- 行为变化同步更新文档；修复缺陷时在 `docs/CHANGELOG.md` 的 Unreleased 部分记录用户可见变化。/ Update documentation for behavior changes and the Unreleased section of `docs/CHANGELOG.md` for user-visible bug fixes.
 - 不提交凭据、签名私钥、个人路径、终端记录或本地配置；截图和复现示例使用虚拟数据。/ Do not submit credentials, signing keys, personal paths, terminal transcripts or local configuration; use fictional examples.
 - 安全问题按 [安全政策](SECURITY.md) 私下反馈。/ Follow the [security policy](SECURITY.md) for private vulnerability reports.
 

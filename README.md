@@ -120,6 +120,8 @@ npm run verify:windows-bundle
 
 Local builds share the official app identifier, data location and update feed by default; use the dedicated configurations in the development guide for isolated testing. Source is maintained here; installers and automatic updates continue through [cli-hub-releases](https://github.com/sangowu/cli-hub-releases).
 
+版本变化见 [更新日志 / Changelog](docs/CHANGELOG.md)。
+
 ## 参与贡献 / Contributing
 
 请先阅读 [贡献指南 / Contributing guide](CONTRIBUTING.md)、[开发与测试 / Development and testing](docs/DEVELOPMENT.md) 和 [架构说明 / Architecture](docs/ARCHITECTURE.md)。漏洞反馈请阅读 [安全政策 / Security policy](SECURITY.md)。

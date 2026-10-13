@@ -101,4 +101,4 @@
 - 前端改动运行 `npm run build` 和现有 `python scripts/verify_stage4_ui.py` 回归检查。
 - 会话栏改动增加运行 `python scripts/verify_session_sidebar.py`，检查多会话状态、滚动、切换、偏好恢复和保存失败处理。
 - 涉及终端行为时，还需进行真实 Tauri/WebView2 验证；模拟界面检查不替代原生行为验证。
-- 新增或调整通用设计规则时同步本文件；修复记录写入 `docs/DECISIONS.md`。
+- 新增或调整通用设计规则时同步本文件；用户可见的修复写入 `docs/CHANGELOG.md`；涉及架构决策时同步 `docs/ARCHITECTURE.md`。
