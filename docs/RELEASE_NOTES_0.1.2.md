@@ -12,7 +12,7 @@ CLI Hub v0.1.2 is a Windows feature release that introduces signed in-app update
 ## Changed
 
 - Replaced the application, taskbar, tray, Start-menu, NSIS, and MSI icon assets with the enlarged three-CLI fan design.
-- Preserved the new icon design iterations under `design/`.
+- Preserved new icon design iterations at the time of this release. These drafts have since been removed from the public source tree; current application icons remain in `src-tauri/icons/`.
 - Increased the package version consistently across the frontend package, Rust crate, Tauri configuration, and lockfiles.
 
 ## Validation
