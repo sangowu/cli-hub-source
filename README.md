@@ -10,8 +10,6 @@
 
 ![CLI Hub demo — session grouping, sidebar collapse/expand, and launch templates](docs/images/cli-hub-demo-en.gif)
 
-[下载高清 MP4 / Download HD MP4](docs/videos/cli-hub-demo-en.mp4) · English · 43s · 1080p
-
 展示 CLI 分组排列、会话栏收起与展开，以及启动模板设置，含鼠标与键盘操作效果。使用示例会话和虚拟路径。
 
 See session grouping, sidebar collapse/expand, and launch template configuration, with visible mouse and keyboard actions. Uses demo sessions and fictional paths.
