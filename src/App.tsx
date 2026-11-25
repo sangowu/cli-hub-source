@@ -1,4 +1,5 @@
 import {
+  ClipboardEvent as ReactClipboardEvent,
   CSSProperties,
   FormEvent,
   KeyboardEvent as ReactKeyboardEvent,
@@ -1350,6 +1351,42 @@ function App() {
     }
   }
 
+  async function handleInputPaste(event: ReactClipboardEvent<HTMLTextAreaElement>) {
+    if (!isRunning || inputSending) {
+      return;
+    }
+
+    const clipboardFiles = Array.from(event.clipboardData.files);
+    if (clipboardFiles.length === 0) {
+      return;
+    }
+
+    event.preventDefault();
+    try {
+      const remainingSlots = Math.max(0, MAX_ATTACHMENTS - attachments.length);
+      if (clipboardFiles.length > remainingSlots) {
+        setError(copy.maxAttachments(MAX_ATTACHMENTS));
+      }
+
+      const savedPaths: string[] = [];
+      for (const file of clipboardFiles.slice(0, remainingSlots)) {
+        const bytes = Array.from(new Uint8Array(await file.arrayBuffer()));
+        const path = await invoke<string>("save_composer_attachment", {
+          fileName: file.name,
+          mimeType: file.type,
+          bytes,
+        });
+        savedPaths.push(path);
+      }
+
+      setAttachments((current) =>
+        Array.from(new Set([...current, ...savedPaths])).slice(0, MAX_ATTACHMENTS),
+      );
+    } catch (reason) {
+      setError(describeError(reason));
+    }
+  }
+
   function requestStopSelected() {
     if (!selectedSession || selectedSession.status !== "running") {
       return;
@@ -2021,6 +2058,7 @@ function App() {
               value={input}
               onChange={(event) => setInput(event.currentTarget.value)}
               onKeyDown={handleInputKeyDown}
+              onPaste={(event) => void handleInputPaste(event)}
               placeholder={
                 isRunning ? copy.sendTo(selectedSession.name) : copy.selectRunning
               }

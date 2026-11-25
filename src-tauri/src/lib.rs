@@ -1,3 +1,4 @@
+mod composer_attachments;
 mod preferences;
 mod private_storage;
 mod terminal;
@@ -145,6 +146,7 @@ pub fn run() {
             }
         })
         .invoke_handler(tauri::generate_handler![
+            composer_attachments::save_composer_attachment,
             is_autostart_launch,
             update_tray_status,
             terminal_host::load_app_preferences,
