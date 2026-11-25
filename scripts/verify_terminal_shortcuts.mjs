@@ -4,7 +4,7 @@ import ts from "typescript";
 
 const source = fs.readFileSync(new URL("../src/terminalShortcuts.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
-const { DEFAULT_TERMINAL_SHORTCUTS: defaults, shortcutFromEvent, terminalNewlineData, conflictingShortcut } =
+const { DEFAULT_TERMINAL_SHORTCUTS: defaults, shortcutFromEvent, terminalClipboardFallbackData, terminalNewlineData, conflictingShortcut } =
   await import("data:text/javascript;base64," + Buffer.from(js).toString("base64"));
 const event = (extra = {}) => ({
   key: "Enter", keyCode: 13, shiftKey: true, ctrlKey: false, altKey: false,
@@ -28,4 +28,8 @@ for (const preset of ["codex", "claude"])
 assert.equal(conflictingShortcut(custom), false);
 assert.equal(conflictingShortcut({ ...defaults, newline: defaults.interrupt }), true);
 assert.equal(terminalNewlineData(event({ key: "N", ctrlKey: true, shiftKey: false }), "codex", "Ctrl+N"), "\x1b\r");
+for (const preset of ["codex", "claude", "pi", "hermes", "opencode"])
+  assert.equal(terminalClipboardFallbackData(preset), "\x16");
+for (const preset of ["cmd", "powerShell", "windowsPowerShell", "custom"])
+  assert.equal(terminalClipboardFallbackData(preset), null);
 console.log("PASS: default/custom newline bindings, retired key, conflicts, native presets, and IME guards");

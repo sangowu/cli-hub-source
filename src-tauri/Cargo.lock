@@ -538,7 +538,7 @@ dependencies = [
 
 [[package]]
 name = "cli-hub"
-version = "0.1.18"
+version = "0.1.19"
 dependencies = [
  "dirs 7.0.0",
  "getrandom 0.3.4",

@@ -29,7 +29,7 @@ import { readTerminalPreviewCandidate, retainTerminalPreview, type TerminalPrevi
 import cliHubIcon from "./assets/cli-hub.png";
 import "@xterm/xterm/css/xterm.css";
 import "./App.css";
-import { DEFAULT_TERMINAL_SHORTCUTS, shortcutFromEvent, conflictingShortcut, terminalNewlineData, type TerminalShortcuts } from "./terminalShortcuts";
+import { DEFAULT_TERMINAL_SHORTCUTS, shortcutFromEvent, conflictingShortcut, terminalClipboardFallbackData, terminalNewlineData, type TerminalShortcuts } from "./terminalShortcuts";
 import { SESSION_HISTORY_STORAGE_KEY, newSessionHistoryKey, readSessionHistory, reconcileSessionHistory, sessionHistoryJson } from "./sessionHistory";
 import {
   ColorModePreference,
@@ -2769,7 +2769,17 @@ function TerminalPane({
       } else if (paste) {
         if (runningRef.current) void readClipboardText().then((text) => {
           if (runningRef.current && terminalRef.current === terminal) terminal.paste(text);
-        }).catch(onError);
+        }).catch((reason) => {
+          const fallbackData = terminalClipboardFallbackData(session.preset);
+          if (fallbackData === null || !runningRef.current || terminalRef.current !== terminal) {
+            onError(reason);
+            return;
+          }
+          void invoke("write_terminal", {
+            sessionId: session.id,
+            data: fallbackData,
+          }).catch(onError);
+        });
       } else if (runningRef.current) {
         void invoke("write_terminal", { sessionId: session.id, data: "\x03" }).catch(onError);
       }
