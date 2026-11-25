@@ -10,6 +10,17 @@ Official installers remain at [cli-hub-releases](https://github.com/sangowu/cli-
 
 - Consolidate release notes and user-facing fixes into this changelog. Summarize current design decisions in the architecture document and focus the development guide on setup, builds and testing. No application behavior changes.
 
+## 0.1.18
+
+Paste images and other clipboard files directly into the shared composer.
+
+- Save clipboard files to a bounded CLI Hub temporary directory and show them in the existing attachment list before submission.
+- Send the resulting local paths through the existing file-reference format, without changing the terminal-host protocol.
+- Keep plain-text paste unchanged. Limit each pasted file to 20 MB and retain the existing ten-attachment limit.
+- Update the locked Vite 8.x build tool to a patched version; `npm audit` reports no known vulnerabilities.
+
+No preference-storage migration is required. Compatible running CLIs survive interface updates. Automated native clipboard interaction remained unavailable because the desktop-control runtime could not connect to the test window.
+
 ## 0.1.17
 
 Keep the previous session preview while the CLI generates new output.
