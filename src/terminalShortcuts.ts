@@ -33,6 +33,12 @@ export function terminalNewlineData(event: KeyboardEvent, preset: string, shortc
   return null;
 }
 
+// CLI Hub handles ordinary text paste itself. If the clipboard is not text,
+// let supported agents receive their native image-paste shortcut and read the clipboard.
+export function terminalClipboardFallbackData(preset: string): string | null {
+  return ["codex", "claude", "pi", "hermes", "opencode"].includes(preset) ? "\x16" : null;
+}
+
 export function conflictingShortcut(shortcuts: TerminalShortcuts): boolean {
   const keys = [shortcuts.copy, shortcuts.paste, shortcuts.pasteAlternate, shortcuts.interrupt, shortcuts.newline];
   return new Set(keys).size !== keys.length;
